@@ -1511,10 +1511,6 @@ class MisraChecker:
                 if nameToken is None and typeStartToken.str != '...':
                     self.reportError(typeStartToken, 8, 2)
 
-                # Type declaration on next line (old style declaration list) is not allowed
-                if (typeStartToken.file == endCall.file) and ((typeStartToken.linenr > endCall.linenr) or (typeStartToken.column > endCall.column)):
-                    self.reportError(typeStartToken, 8, 2)
-
         # Check arguments in pointer declarations
         for var in data.variables:
             if not var.isPointer:
